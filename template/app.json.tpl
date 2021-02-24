@@ -12,7 +12,7 @@
         "Essential": true,
         "DependsOn": [
             {
-                "containerName": "AppDynamicsAgent",
+                "containerName": "${APPDYNAMICS_AGENT_CONTAINER_NAME}",
                 "condition": "COMPLETE"
             }
         ],
