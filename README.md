@@ -1,4 +1,4 @@
-# Automate ECS Fargate instrumentation using Terraform 
+# AppDynamics:  ECS Fargate instrumentation using Terraform 
 
 Amazon Elastic Container Service (ECS) is a scalable container management service that makes it easy to run, stop, and manage Docker containers on Amazon EC2 clusters.
 
