@@ -48,7 +48,7 @@ First, you will need to set up the Terraform provider to talk to your AWS accoun
 provider "aws" {
   access_key = var.aws-access-key
   secret_key = var.aws-secret-key
-  region     = "eu-central-1"
+  region =     var.aws-region
   version    = "~> 2.0"
 }
 ```
