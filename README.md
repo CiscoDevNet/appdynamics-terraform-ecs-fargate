@@ -37,7 +37,7 @@ This demo creates the following AWS resources:
 
 # AppDynamics Specific Changes 
 
-- The main logic is in the <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/template/app.json.tpl">`template/app.json.tpl`</a> this file. Please review the `DependsOn` section and the AppDynamics environment variables.  
+- The main logic is in the <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/template/app.json.tpl">`template/app.json.tpl`</a>  file. Please review the `DependsOn` section and the AppDynamics environment variables.  
 - Create AppDyamics secret in  <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/secrets.auto.tfvars.example">`secrets.auto.tfvars`</a> Remove .example from the file name. 
 - Populate <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/appdynamics.auto.tfvars">`appdynamics.auto.tfvars`</a> with your controller credentials and the agent's container registry. 
 
