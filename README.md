@@ -7,7 +7,7 @@ This project demonstrates how AppDynamics agents can be embedded into an existin
 To ensure that the customer's application image is kept intact, and that the deployment process is immutable,  we have leveraged AWS CloudFormation's Depends-On feature to dynamically acquire the AppDynamics agent image from a Dockerhub, copy the content of the agent image into an emphemeral volume, then configure mount the shared volume into the main application's container at runtime. 
 
 
-# Default Resources - without AppDynamics 
+# Resources
 This demo creates the following AWS resources:
 
 - VPC
@@ -25,9 +25,9 @@ This demo creates the following AWS resources:
 ![aws](https://user-images.githubusercontent.com/2548160/111489223-da447980-8731-11eb-8dc7-260ab6c63121.png)
 (Source: https://aws.amazon.com/de/blogs/compute/task-networking-in-aws-fargate/)
 
-# AppDynamics 
+# AppDynamics Specific Changes 
 
-- Modify the CloudFormation template to add `DependsOn` and AppDynamics environment variables - <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/template/app.json.tpl">`template/app.json.tpl`</a>
+- The main logic is in the <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/template/app.json.tpl">`template/app.json.tpl`</a> this file. Please review the `DependsOn` section and the AppDynamics environment variables.  
 - Create AppDyamics secret in  <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/secrets.auto.tfvars.example">`secrets.auto.tfvars`</a> Remove .example from the file name. 
 - Populate <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/appdynamics.auto.tfvars">`appdynamics.auto.tfvars`</a> with your controller credentials and the agent's container registry. 
 
