@@ -18,7 +18,7 @@ This demo creates the following AWS resources:
 - Security groups - that allows access to the specified container port
 - An Application Load Balancer (ALB) -  with listeners for port 80
 - An ECS cluster with a service - inculding auto scaling policies for CPU and memory usage, 
-   -  Task definition to run docker containers
+   -  Task definition to run docker containers - an init container for `AppDynamics` and the main container application
    -  IAM execution role
 - Secrets - Creates secrets in Secret Manager
 
