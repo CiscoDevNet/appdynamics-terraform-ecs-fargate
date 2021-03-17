@@ -2,11 +2,15 @@
 
 Amazon Elastic Container Service (ECS) is a scalable container management service that makes it easy to run, stop, and manage Docker containers on Amazon EC2 clusters.
 
-This project demonstrates how AppDynamics agents can be embedded into an existing ECS/Fargate Terraform using Terraform. 
+This project demonstrates how AppDynamics agents can be embedded into an existing ECS/Fargate setup using Terraform. 
 
-To ensure that the customer's application image is kept intact, and that the deployment process is immutable,  we have leveraged AWS CloudFormation's Depends-On feature to dynamically acquire the AppDynamics agent image from a Dockerhub, copy the content of the agent image into an emphemeral volume, then configure mount the shared volume into the main application's container at runtime. 
-
-
+Two primary considerations went into the design of this project: 
+ Customers' existing container images and/or the image build process should be unaltered. 
+The deployment process must remain immutable. 
+To achieve both objectives,  we leveraged on AWS CloudFormation's DependsOn attribute:  
+To dynamically acquire the AppDynamics agent image from DockerHub
+Copy the content of the agent image into an ephemeral volume, then 
+ Mount the shared volume into the main application's container at runtime. 
 # Resources
 This demo creates the following AWS resources:
 
@@ -17,7 +21,7 @@ This demo creates the following AWS resources:
 - NAT gateways with attached Elastic IPs for the private subnet
 - Security groups - that allows access to the specified container port
 - An Application Load Balancer (ALB) -  with listeners for port 80
-- An ECS cluster with a service - inculding auto scaling policies for CPU and memory usage, 
+- An ECS cluster with a service - including auto-scaling policies for CPU and memory usage, 
    -  Task definition to run docker containers - an init container for `AppDynamics` and the main container application
    -  IAM execution role
 - Secrets - Creates secrets in Secret Manager
@@ -34,7 +38,7 @@ This demo creates the following AWS resources:
 
 # Run it
 
-First, you will need to setup the Terraform provider to talk to your AWS account. Please refer to <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/main.tf">`main.tf`</a>
+First, you will need to set up the Terraform provider to talk to your AWS account. Please refer to <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/main.tf">`main.tf`</a>
 
 ```yaml
 provider "aws" {
@@ -45,11 +49,11 @@ provider "aws" {
 }
 ```
 
-You can also leave out access_key and secret_key, then Terraform will use the profile values stored in your .aws/config 
+You can also leave out access_key and secret_key; then Terraform will use the profile values stored in your .aws/config. 
 
 Next, execute the following commands:
 
-#### Initalise Terraform 
+#### Initialise Terraform 
 `$ terraform init`
 
 #### View Proposed execution plan 
