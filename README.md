@@ -5,12 +5,16 @@ Amazon Elastic Container Service (ECS) is a scalable container management servic
 This project demonstrates how AppDynamics agents can be embedded into an existing ECS/Fargate setup using Terraform. 
 
 Two primary considerations went into the design of this project: 
- Customers' existing container images and/or the image build process should be unaltered. 
-The deployment process must remain immutable. 
-To achieve both objectives,  we leveraged on AWS CloudFormation's DependsOn attribute:  
-To dynamically acquire the AppDynamics agent image from DockerHub
-Copy the content of the agent image into an ephemeral volume, then 
- Mount the shared volume into the main application's container at runtime. 
+
+- Customers' existing container images and/or the image build process should be unaltered. 
+- The deployment process must remain immutable. 
+
+To achieve both objectives, we leveraged on AWS CloudFormation's DependsOn attribute: 
+
+- To dynamically acquire the AppDynamics agent image from DockerHub
+- Copy the content of the agent image into an ephemeral volume, then 
+- Mount the shared volume into the main application's container at runtime. 
+
 # Resources
 This demo creates the following AWS resources:
 
