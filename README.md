@@ -27,8 +27,8 @@ This demo creates the following AWS resources:
 
 # AppDynamics 
 
-- Modify the CloudFormation template to add `DependsOn` and AppDynamics environment variables   - https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/template/app.json.tpl
-- Create AppDyamics secret. Remove .example from the file name  - https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/secrets.auto.tfvars.example
+- Modify the CloudFormation template to add `DependsOn` and AppDynamics environment variables - <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/template/app.json.tpl">`template/app.json.tpl`</a>
+- Create AppDyamics secret in  <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/secrets.auto.tfvars.example">`secrets.auto.tfvars`</a> Remove .example from the file name. 
 - Populate <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/appdynamics.auto.tfvars">`appdynamics.auto.tfvars`</a> with your controller credentials and the agent's container registry. 
 
 
@@ -49,13 +49,13 @@ You can actually also leave out access_key and secret_key, then Terraform will u
 
 Next, execute the following commands:
 
-# Sets up Terraform to run
+### Sets up Terraform to run
 `$ terraform init`
 
-# View Proposed execution plan 
+### View Proposed execution plan 
 `$ terraform plan`
 
-# Executes the Terraform run
+### Executes the Terraform run
 `$ terraform apply`
 
 
