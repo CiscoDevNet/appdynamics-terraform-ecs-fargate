@@ -66,4 +66,8 @@ Next, execute the following commands:
 #### Executes the Terraform run
 `$ terraform apply`
 
+#### Delete all 
+`$ terraform destroy`
+
+
 
