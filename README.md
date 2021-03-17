@@ -4,14 +4,16 @@ Amazon Elastic Container Service (ECS) is a scalable container management servic
 
 This project demonstrates how AppDynamics agents can be embedded into an existing ECS/Fargate setup using Terraform. 
 
-Two primary considerations went into the design of this project: 
+The primary considerations that went into the design of this project are: 
 
 - Customers' existing container images and/or the image build process should be unaltered. 
 - The deployment process must remain immutable. 
+- Idempotency - customers should get the same instrumentation result even if the terraform config is applied multiple times. 
+- AppDynamics access key must be stored and accessed from AWS secret manager, not as plaintext. 
 
-To achieve both objectives, we leveraged on AWS CloudFormation's <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html"> `DependsOn` </a> attribute: 
+In addition, we leveraged on AWS CloudFormation's <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html"> `DependsOn` </a> attribute to: 
 
-- To dynamically acquire the AppDynamics agent image from DockerHub
+- Dynamically acquire the AppDynamics agent image from DockerHub. You may copy the image to your prefered registry. 
 - Copy the content of the agent image into an ephemeral volume, then 
 - Mount the shared volume into the main application's container at runtime. 
 
@@ -25,7 +27,7 @@ This demo creates the following AWS resources:
 - NAT gateways with attached Elastic IPs for the private subnet
 - Security groups - that allows access to the specified container port
 - An Application Load Balancer (ALB) -  with listeners for port 80
-- An ECS cluster with a service - including auto-scaling policies for CPU and memory usage, 
+- An ECS cluster with a service - including auto-scaling policies for CPU and memory usage 
    -  Task definition to run docker containers - an init container for `AppDynamics` and the main container application
    -  IAM execution role
 - Secrets - Creates secrets in Secret Manager
