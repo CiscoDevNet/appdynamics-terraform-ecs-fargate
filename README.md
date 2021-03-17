@@ -34,7 +34,7 @@ This demo creates the following AWS resources:
 
 # Run it
 
-We need to setup the Terraform provider to talk to an AWS account. Please refer to <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/main.tf">`main.tf`</a>
+First, you will need to setup the Terraform provider to talk to your AWS account. Please refer to <a href="https://github.com/Appdynamics/appdynamics-terraform-ecs-fargate/blob/main/main.tf">`main.tf`</a>
 
 ```yaml
 provider "aws" {
@@ -45,17 +45,17 @@ provider "aws" {
 }
 ```
 
-You can actually also leave out access_key and secret_key, then Terraform will use the profile values stored in your .aws/config 
+You can also leave out access_key and secret_key, then Terraform will use the profile values stored in your .aws/config 
 
 Next, execute the following commands:
 
-### Sets up Terraform to run
+#### Initalise Terraform 
 `$ terraform init`
 
-### View Proposed execution plan 
+#### View Proposed execution plan 
 `$ terraform plan`
 
-### Executes the Terraform run
+#### Executes the Terraform run
 `$ terraform apply`
 
 
