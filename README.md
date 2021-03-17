@@ -9,7 +9,7 @@ Two primary considerations went into the design of this project:
 - Customers' existing container images and/or the image build process should be unaltered. 
 - The deployment process must remain immutable. 
 
-To achieve both objectives, we leveraged on AWS CloudFormation's DependsOn attribute: 
+To achieve both objectives, we leveraged on AWS CloudFormation's <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html"> `DependsOn` </a> attribute: 
 
 - To dynamically acquire the AppDynamics agent image from DockerHub
 - Copy the content of the agent image into an ephemeral volume, then 
