@@ -35,17 +35,6 @@ module "security_groups" {
   container_port = var.container_port
 }
 
-module "alb" {
-  source              = "./alb"
-  name                = var.name
-  vpc_id              = module.vpc.id
-  subnets             = module.vpc.public_subnets
-  environment         = var.environment
-  alb_security_groups = [module.security_groups.alb]
-  alb_tls_cert_arn    = var.tsl_certificate_arn
-  health_check_path   = var.health_check_path
-}
-
 module "ecr" {
   source      = "./ecr"
   name        = var.name
@@ -59,6 +48,7 @@ module "secrets" {
   environment               = var.environment
   appdynamics-access-secret = var.APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY
 }
+
 
 module "ecs" {
   source                      = "./modules/ecs"
@@ -100,4 +90,16 @@ module "ecs" {
   APPDYNAMICS_AGENT_CONTAINER_NAME = var.APPDYNAMICS_AGENT_CONTAINER_NAME
 
 
+}
+
+
+module "alb" {
+  source              = "./alb"
+  name                = var.name
+  vpc_id              = module.vpc.id
+  subnets             = module.vpc.public_subnets
+  environment         = var.environment
+  alb_security_groups = [module.security_groups.alb]
+  alb_tls_cert_arn    = var.tsl_certificate_arn
+  health_check_path   = var.health_check_path
 }

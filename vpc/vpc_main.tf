@@ -116,8 +116,11 @@ resource "aws_flow_log" "main" {
   vpc_id          = aws_vpc.main.id
 }
 
+resource "random_uuid" "log" {
+}
+
 resource "aws_cloudwatch_log_group" "main" {
-  name = "${var.name}-cloudwatch-log-group-1"
+  name = "${var.name}-cloudwatch-log-group-${random_uuid.log.result}"
 }
 
 resource "aws_iam_role" "vpc-flow-logs-role" {

@@ -1,4 +1,4 @@
-name        = "appd-project-name"
+name        = "appd-project-name-demo1"
 environment = "test"
 #availability_zones  = ["eu-west-2", "eu-west-1"] #subnets not avilable in my preferered regions.. 
 availability_zones  = ["eu-central-1a", "eu-central-1b"]
