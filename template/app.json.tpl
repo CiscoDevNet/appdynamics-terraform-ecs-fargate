@@ -94,9 +94,7 @@
         "Image": "${APPDYNAMICS_AGENT_IMAGE}",
         "Essential": false,
         "Command": [
-            "/bin/sh",
-            "-c",
-            "cp -r /opt/appdynamics/. /opt/temp"
+            "/opt/temp"
         ],
         "mountPoints": [
             {
